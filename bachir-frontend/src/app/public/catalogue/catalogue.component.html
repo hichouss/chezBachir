@@ -1,0 +1,85 @@
+<app-navbar />
+
+<!-- ── En-tête ── -->
+<section class="cat-hero">
+  <div class="cat-hero__inner">
+    <p class="cat-hero__label">BOUCHERIE BACHIR</p>
+    <h1 class="cat-hero__title">Nos Produits</h1>
+    <p class="cat-hero__sub">Viandes fraîches, halal certifiées, sélectionnées chaque jour avec soin.</p>
+  </div>
+</section>
+
+<!-- ── Filtres ── -->
+<div class="cat-filters-bar">
+  <div class="cat-filters-bar__inner">
+
+    <div class="cat-search">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="text" [(ngModel)]="searchKeyword" (input)="onSearch()"
+             placeholder="Rechercher un produit…" />
+    </div>
+
+    <div class="cat-filters">
+      <button class="cat-filter" [class.cat-filter--active]="selectedCategory === null"
+              (click)="onCategoryChange(null)">Tous</button>
+      @for (cat of categories; track cat.id) {
+        <button class="cat-filter" [class.cat-filter--active]="selectedCategory === cat.id"
+                (click)="onCategoryChange(cat.id)">
+          {{ cat.name }}
+        </button>
+      }
+    </div>
+
+  </div>
+</div>
+
+<!-- ── Grille ── -->
+<main class="cat-main">
+  <div class="cat-main__inner">
+
+    @if (filtered.length === 0) {
+      <div class="cat-empty">
+        <p>Aucun produit trouvé.</p>
+        <span>Essayez un autre mot-clé ou contactez-nous directement.</span>
+      </div>
+    } @else {
+      <div class="cat-grid">
+        @for (p of paginated; track p.id) {
+          <article class="pcard">
+            <div class="pcard__img">
+              @if (p.imageUrl) {
+                <img [src]="p.imageUrl" [alt]="p.name" />
+              } @else {
+                <div class="pcard__placeholder">{{ p.emoji }}</div>
+              }
+            </div>
+            <div class="pcard__body">
+              <h3 class="pcard__name">{{ p.name }}</h3>
+              <div class="pcard__meta">
+                <span class="pcard__cat">{{ p.category }}</span>
+                @if (p.price) {
+                  <span class="pcard__price">{{ p.price | number:'1.0-0' }} € <small>/ {{ p.unit }}</small></span>
+                }
+              </div>
+            </div>
+          </article>
+        }
+      </div>
+    }
+
+    @if (totalPages > 1) {
+      <div class="cat-pagination">
+        <button class="cat-page" (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">‹</button>
+        @for (p of pages; track p) {
+          <button class="cat-page" [class.cat-page--active]="p === currentPage" (click)="goToPage(p)">{{ p }}</button>
+        }
+        <button class="cat-page" (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">›</button>
+      </div>
+    }
+
+  </div>
+</main>
+
+<app-footer />

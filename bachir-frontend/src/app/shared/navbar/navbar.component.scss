@@ -1,0 +1,120 @@
+.navbar {
+  background: #fff;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  &__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    overflow: visible;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  &__logo-img {
+    height: 96px;
+    width: 96px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  &__nav {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+
+    a {
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: #333;
+      transition: color 0.2s;
+      position: relative;
+      padding-bottom: 2px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #c41e2a;
+        transition: width 0.2s;
+      }
+
+      &:hover, &.active {
+        color: #c41e2a;
+        &::after { width: 100%; }
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  &__icon-btn {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: #333;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: background 0.2s;
+
+    &:hover { background: #f5f5f5; }
+  }
+
+  &__badge {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: #c41e2a;
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__cta {
+    background: #c41e2a;
+    color: white;
+    padding: 0.45rem 1.2rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+
+    &:hover { background: #a01020; }
+  }
+}

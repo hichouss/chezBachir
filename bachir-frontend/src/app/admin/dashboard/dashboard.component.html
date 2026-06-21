@@ -1,0 +1,63 @@
+<h1 class="page-title">Tableau de bord</h1>
+
+@if (stats) {
+  <div class="stats-grid">
+    <div class="stat-card stat-card--pending">
+      <div class="stat-card__icon">🕐</div>
+      <div class="stat-card__info">
+        <span class="stat-card__value">{{ stats.pendingOrders }}</span>
+        <span class="stat-card__label">En attente</span>
+      </div>
+    </div>
+    <div class="stat-card stat-card--preparing">
+      <div class="stat-card__icon">🔪</div>
+      <div class="stat-card__info">
+        <span class="stat-card__value">{{ stats.preparingOrders }}</span>
+        <span class="stat-card__label">En préparation</span>
+      </div>
+    </div>
+    <div class="stat-card stat-card--ready">
+      <div class="stat-card__icon">✅</div>
+      <div class="stat-card__info">
+        <span class="stat-card__value">{{ stats.readyOrders }}</span>
+        <span class="stat-card__label">Prêtes</span>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card__icon">📦</div>
+      <div class="stat-card__info">
+        <span class="stat-card__value">{{ stats.todayOrders }}</span>
+        <span class="stat-card__label">Aujourd'hui</span>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card__icon">📋</div>
+      <div class="stat-card__info">
+        <span class="stat-card__value">{{ stats.totalOrders }}</span>
+        <span class="stat-card__label">Total commandes</span>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card__icon">🥩</div>
+      <div class="stat-card__info">
+        <span class="stat-card__value">{{ stats.totalProducts }}</span>
+        <span class="stat-card__label">Produits</span>
+      </div>
+    </div>
+  </div>
+
+  @if (stats.topProducts.length > 0) {
+    <div class="top-products card" style="padding:1.5rem;margin-top:2rem">
+      <h2 style="font-size:1.1rem;margin-bottom:1rem">Produits les plus commandés</h2>
+      @for (p of stats.topProducts; track p.name; let i = $index) {
+        <div class="top-product-row">
+          <span class="rank">#{{ i + 1 }}</span>
+          <span class="name">{{ p.name }}</span>
+          <span class="count">{{ p.count }} commandes</span>
+        </div>
+      }
+    </div>
+  }
+} @else {
+  <div class="empty-state">Chargement des statistiques...</div>
+}

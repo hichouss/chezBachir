@@ -1,0 +1,151 @@
+<app-navbar />
+
+<!-- ── HERO ── -->
+<section class="contact-hero">
+  <div class="contact-hero__inner">
+    <p class="contact-hero__label">CONTACTEZ-NOUS</p>
+    <h1 class="contact-hero__title">Nous sommes là<br>pour vous aider</h1>
+    <p class="contact-hero__sub">Une question, un renseignement ou besoin de conseil ? Notre équipe vous répond avec plaisir.</p>
+  </div>
+</section>
+
+<!-- ── CONTENU ── -->
+<main class="contact-main">
+  <div class="contact-main__inner">
+
+    <!-- Bloc intro pleine largeur -->
+    <div class="contact-intro">
+      <p class="contact-intro__label">À VOTRE ÉCOUTE</p>
+      <h2 class="contact-intro__title">Des conseils personnalisés<br>pour bien choisir</h2>
+      <p class="contact-intro__text">Que ce soit pour choisir la meilleure pièce, avoir des conseils de cuisson ou en savoir plus sur nos viandes halal certifiées, nous sommes à votre disposition.</p>
+    </div>
+
+    <!-- Grid : infos + formulaire -->
+    <div class="contact-grid">
+
+      <!-- Colonne gauche : infos -->
+      <aside class="contact-infos">
+
+        <div class="cinfo-card">
+          <div class="cinfo-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c41e2a" stroke-width="1.8">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Adresse</strong>
+            <span>6 Rue de Marseille, 69007 Lyon</span>
+          </div>
+        </div>
+
+        <div class="cinfo-card">
+          <div class="cinfo-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c41e2a" stroke-width="1.8">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Téléphone</strong>
+            <span>04 78 61 16 70</span>
+          </div>
+        </div>
+
+        <div class="cinfo-card">
+          <div class="cinfo-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c41e2a" stroke-width="1.8">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Horaires</strong>
+            <span>Lun–Jeu 08h30–19h30 · Ven 08h30–12h30 / 14h–19h30 · Sam 09h–19h30 · Dim 09h–19h</span>
+          </div>
+        </div>
+
+        <div class="cinfo-card">
+          <div class="cinfo-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c41e2a" stroke-width="1.8">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Email</strong>
+            <span>contact&#64;boucherie-bachir.fr</span>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- Colonne droite : formulaire -->
+      <div class="contact-form-card">
+
+        @if (sent) {
+          <div class="form-success">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="1.8">
+              <circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/>
+            </svg>
+            <h3>Message envoyé !</h3>
+            <p>Nous vous répondrons dans les plus brefs délais.</p>
+          </div>
+        } @else {
+
+          <h2 class="form-title">Envoyez-nous un message</h2>
+          <p class="form-sub">Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.</p>
+
+          <form class="cform" (ngSubmit)="onSubmit()">
+
+            <div class="cform__row">
+              <div class="cform__field">
+                <input type="text" placeholder="Nom complet *" [(ngModel)]="formData.name" name="name" required />
+              </div>
+              <div class="cform__field">
+                <input type="tel" placeholder="Téléphone *" [(ngModel)]="formData.phone" name="phone" required />
+              </div>
+            </div>
+
+            <div class="cform__field">
+              <input type="email" placeholder="Email *" [(ngModel)]="formData.email" name="email" required />
+            </div>
+
+            <div class="cform__field">
+              <select [(ngModel)]="formData.subject" name="subject">
+                <option value="" disabled selected>Sujet</option>
+                <option>Question sur un produit</option>
+                <option>Commande spéciale</option>
+                <option>Tarifs et promotions</option>
+                <option>Autre</option>
+              </select>
+              <svg class="cform__select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </div>
+
+            <div class="cform__field">
+              <textarea placeholder="Votre message *" rows="5" [(ngModel)]="formData.message" name="message" required></textarea>
+            </div>
+
+            <button type="submit" class="cform__submit">
+              Envoyer le message
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+            </button>
+
+            <p class="cform__privacy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              Vos données sont confidentielles et ne seront jamais partagées.
+            </p>
+
+          </form>
+        }
+
+      </div>
+
+    </div>
+
+  </div>
+</main>
+
+<app-footer />

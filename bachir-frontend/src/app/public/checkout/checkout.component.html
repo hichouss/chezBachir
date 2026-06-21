@@ -1,0 +1,82 @@
+<app-navbar />
+
+<main class="checkout-page">
+  <div class="container">
+
+    @if (success) {
+      <div class="success-card">
+        <div class="success-icon">✓</div>
+        <h1>Commande confirmée !</h1>
+        <p>Votre commande <strong>#{{ orderId }}</strong> a bien été enregistrée.</p>
+        <p>Vous pouvez venir la récupérer à notre boucherie. Nous la préparerons pour vous !</p>
+        <a routerLink="/" class="btn btn-primary">Retour à l'accueil</a>
+      </div>
+    } @else {
+
+      <h1 class="page-title">Passer la commande</h1>
+
+      @if (cart.items().length === 0) {
+        <div class="alert alert-error">
+          Votre panier est vide. <a routerLink="/catalogue">Retour au catalogue</a>
+        </div>
+      } @else {
+
+        <div class="checkout-layout">
+          <!-- Formulaire -->
+          <div class="checkout-form">
+            <h2>Vos coordonnées</h2>
+            <form [formGroup]="form" (ngSubmit)="submit()">
+              <div class="form-group">
+                <label>Nom complet *</label>
+                <input type="text" formControlName="customerName" placeholder="Votre nom" />
+                @if (form.get('customerName')?.invalid && form.get('customerName')?.touched) {
+                  <span class="field-error">Le nom est obligatoire (min. 2 caractères)</span>
+                }
+              </div>
+              <div class="form-group">
+                <label>Téléphone *</label>
+                <input type="tel" formControlName="customerPhone" placeholder="06 12 34 56 78" />
+                @if (form.get('customerPhone')?.invalid && form.get('customerPhone')?.touched) {
+                  <span class="field-error">Numéro de téléphone invalide</span>
+                }
+              </div>
+              <div class="form-group">
+                <label>Email (optionnel)</label>
+                <input type="email" formControlName="customerEmail" placeholder="votre@email.com" />
+              </div>
+              <div class="form-group">
+                <label>Remarques (optionnel)</label>
+                <textarea formControlName="notes" placeholder="Préférences de découpe, allergies..."></textarea>
+              </div>
+
+              @if (error) { <div class="alert alert-error">{{ error }}</div> }
+
+              <button type="submit" class="btn btn-primary" [disabled]="form.invalid || loading">
+                {{ loading ? 'Envoi en cours...' : 'Confirmer la commande' }}
+              </button>
+            </form>
+          </div>
+
+          <!-- Récapitulatif -->
+          <div class="checkout-summary">
+            <h2>Votre commande</h2>
+            @for (item of cart.items(); track item.product.id) {
+              <div class="summary-item">
+                <span>{{ item.product.name }} × {{ item.quantity }}</span>
+                <span>{{ (item.product.price * item.quantity) | number:'1.2-2' }} €</span>
+              </div>
+            }
+            <div class="summary-total">
+              <span>Total</span>
+              <span>{{ cart.totalAmount() | number:'1.2-2' }} €</span>
+            </div>
+            <p class="summary-note">💳 Paiement en magasin au retrait</p>
+          </div>
+        </div>
+      }
+    }
+
+  </div>
+</main>
+
+<app-footer />

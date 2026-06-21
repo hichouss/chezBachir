@@ -1,0 +1,118 @@
+<div class="admin-page-header">
+  <h1 class="page-title">Produits</h1>
+  <button class="btn btn-primary" (click)="openCreate()">+ Nouveau produit</button>
+</div>
+
+@if (success) { <div class="alert alert-success">{{ success }}</div> }
+
+@if (showForm) {
+  <div class="form-panel card">
+    <h2>{{ isEdit ? 'Modifier le produit' : 'Nouveau produit' }}</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Nom *</label>
+        <input type="text" [(ngModel)]="editing.name" />
+      </div>
+      <div class="form-group">
+        <label>Catégorie *</label>
+        <select [(ngModel)]="editing.categoryId">
+          <option value="">-- Choisir --</option>
+          @for (c of categories; track c.id) {
+            <option [value]="c.id">{{ c.name }}</option>
+          }
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Prix (€) *</label>
+        <input type="number" [(ngModel)]="editing.price" min="0" step="0.01" />
+      </div>
+      <div class="form-group">
+        <label>Unité</label>
+        <select [(ngModel)]="editing.unit">
+          <option value="kg">kg</option>
+          <option value="pièce">pièce</option>
+          <option value="100g">100g</option>
+          <option value="lot">lot</option>
+        </select>
+      </div>
+      <div class="form-group form-group--full">
+        <label>Description</label>
+        <textarea [(ngModel)]="editing.description"></textarea>
+      </div>
+      <div class="form-group form-group--full">
+        <label>URL de l'image</label>
+        <input type="text" [(ngModel)]="editing.imageUrl" placeholder="https://..." />
+      </div>
+      <div class="form-group">
+        <label>
+          <input type="checkbox" [(ngModel)]="editing.isPromotion" />
+          Promotion
+        </label>
+      </div>
+      @if (editing.isPromotion) {
+        <div class="form-group">
+          <label>Prix original (€)</label>
+          <input type="number" [(ngModel)]="editing.originalPrice" min="0" step="0.01" />
+        </div>
+      }
+      <div class="form-group">
+        <label>
+          <input type="checkbox" [(ngModel)]="editing.available" />
+          Disponible
+        </label>
+      </div>
+    </div>
+    @if (error) { <div class="alert alert-error">{{ error }}</div> }
+    <div class="form-actions">
+      <button class="btn btn-primary" (click)="save()">💾 Enregistrer</button>
+      <button class="btn btn-outline" (click)="showForm = false">Annuler</button>
+    </div>
+  </div>
+}
+
+<div class="table-container card">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Nom</th>
+        <th>Catégorie</th>
+        <th>Prix</th>
+        <th>Unité</th>
+        <th>Statut</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (p of products; track p.id) {
+        <tr [class.unavailable]="!p.available">
+          <td>
+            @if (p.imageUrl) {
+              <img [src]="p.imageUrl" [alt]="p.name" class="product-thumb" />
+            } @else {
+              <span class="product-thumb-placeholder">🥩</span>
+            }
+          </td>
+          <td>
+            <strong>{{ p.name }}</strong>
+            @if (p.isPromotion) { <span class="badge badge-promo ml">PROMO</span> }
+          </td>
+          <td>{{ p.categoryName }}</td>
+          <td>{{ p.price | number:'1.2-2' }} €</td>
+          <td>{{ p.unit }}</td>
+          <td>
+            @if (p.available) {
+              <span class="status-dot status-dot--on">Disponible</span>
+            } @else {
+              <span class="status-dot status-dot--off">Indisponible</span>
+            }
+          </td>
+          <td>
+            <button class="btn btn-outline btn-sm" (click)="openEdit(p)">✏️</button>
+            <button class="btn btn-danger btn-sm" (click)="delete(p.id)">🗑️</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

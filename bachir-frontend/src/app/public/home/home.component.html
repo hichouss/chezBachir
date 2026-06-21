@@ -1,0 +1,243 @@
+<app-navbar />
+
+<!-- ══════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero__content">
+    <p class="hero__eyebrow">La qualité,</p>
+    <p class="hero__halal">✦ HALAL CERTIFIÉE</p>
+    <h1 class="hero__title">
+      NOTRE<br>PROMESSE
+    </h1>
+    <p class="hero__sub">
+      Des viandes fraîches et savoureuses<br>
+      sélectionnées avec soin pour vous.
+    </p>
+    <a routerLink="/catalogue" class="hero__cta">
+      Découvrir nos produits
+    </a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     INFO BAR
+══════════════════════════════════════════════ -->
+<div class="info-bar-wrapper">
+<div class="info-bar">
+  <div class="info-bar__inner">
+    <div class="info-bar__item">
+      <div class="info-bar__icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c41e2a" stroke-width="1.8">
+          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+        </svg>
+      </div>
+      <div>
+        <strong>Horaires d'ouverture</strong>
+        <span>Lun–Jeu 08h30–19h30 · Ven 08h30–19h30</span>
+      </div>
+    </div>
+    <div class="info-bar__divider"></div>
+    <div class="info-bar__item">
+      <div class="info-bar__icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c41e2a" stroke-width="1.8">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+      </div>
+      <div>
+        <strong>Notre adresse</strong>
+        <span>6 Rue de Marseille, 69007 Lyon</span>
+      </div>
+    </div>
+    <div class="info-bar__divider"></div>
+    <div class="info-bar__item">
+      <div class="info-bar__icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c41e2a" stroke-width="1.8">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+      </div>
+      <div>
+        <strong>Nous appeler</strong>
+        <span>04 78 61 16 70</span>
+      </div>
+    </div>
+    <div class="info-bar__divider"></div>
+    <div class="info-bar__item">
+      <div class="info-bar__icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c41e2a" stroke-width="1.8">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+      </div>
+      <div>
+        <strong>Venez nous voir</strong>
+        <span>Accueil en magasin 7j/7</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PRODUITS
+══════════════════════════════════════════════ -->
+<section class="products-section">
+  <div class="products-section__inner">
+
+    <div class="products-header">
+      <div>
+        <p class="products-label">NOS PRODUITS</p>
+        <h2 class="products-title">Nos meilleures viandes</h2>
+      </div>
+      <a routerLink="/catalogue" class="voir-tout">
+        Voir tout
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="products-grid">
+      @for (p of featuredProducts; track p.id) {
+        <div class="product-card">
+          <div class="product-card__img">
+            <img [src]="p.imageUrl" [alt]="p.name" />
+          </div>
+          <div class="product-card__body">
+            <h3>{{ p.name }}</h3>
+            <span class="product-card__unit">{{ p.unit }}</span>
+            <div class="product-card__footer">
+              <span class="price-amount">{{ p.price | number:'1.0-0' }} €</span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Dots navigation -->
+    <div class="products-dots">
+      <span class="products-dots__dot products-dots__dot--active"></span>
+      <span class="products-dots__dot"></span>
+      <span class="products-dots__dot"></span>
+      <span class="products-dots__dot"></span>
+      <span class="products-dots__dot"></span>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     AVIS CLIENTS
+══════════════════════════════════════════════ -->
+<section class="reviews">
+  <div class="reviews__inner">
+
+    <div class="reviews__header">
+      <p class="reviews__label">AVIS CLIENTS</p>
+      <h2 class="reviews__title">Ce que disent nos clients</h2>
+    </div>
+
+    <div class="reviews__track-wrapper">
+      <div class="reviews__track">
+
+        <!-- Série 1 -->
+        <div class="reviews__card">
+          <div class="reviews__card-stars">★★★★★</div>
+          <p class="reviews__card-text">« Une boucherie comme on n'en trouve plus. La viande est toujours fraîche, le service irréprochable. Je viens ici depuis des années. »</p>
+          <div class="reviews__card-author">
+            <div class="reviews__card-avatar">H</div>
+            <div><strong>Hichem C.</strong><span>Client depuis 2018</span></div>
+          </div>
+        </div>
+
+        <div class="reviews__card">
+          <div class="reviews__card-stars">★★★★★</div>
+          <p class="reviews__card-text">« La qualité halal est irréprochable. On sent vraiment la différence avec les grandes surfaces. Je recommande à toute ma famille. »</p>
+          <div class="reviews__card-author">
+            <div class="reviews__card-avatar">N</div>
+            <div><strong>Natalie B.</strong><span>Cliente fidèle</span></div>
+          </div>
+        </div>
+
+        <div class="reviews__card">
+          <div class="reviews__card-stars">★★★★★</div>
+          <p class="reviews__card-text">« L'équipe est aux petits soins, la préparation sur demande est un vrai plus. Mon boucher de confiance depuis que j'habite le quartier. »</p>
+          <div class="reviews__card-author">
+            <div class="reviews__card-avatar">M</div>
+            <div><strong>Mouhamed O.</strong><span>Client depuis 2021</span></div>
+          </div>
+        </div>
+
+        <div class="reviews__card">
+          <div class="reviews__card-stars">★★★★★</div>
+          <p class="reviews__card-text">« Des morceaux d'agneau exceptionnels pour notre Aid. Le boucher a pris le temps de tout expliquer et de couper selon nos envies. Merci ! »</p>
+          <div class="reviews__card-author">
+            <div class="reviews__card-avatar">Y</div>
+            <div><strong>Yasmine C.</strong><span>Cliente fidèle</span></div>
+          </div>
+        </div>
+
+        <div class="reviews__card">
+          <div class="reviews__card-stars">★★★★★</div>
+          <p class="reviews__card-text">« Toujours accueilli avec le sourire. La fraîcheur des produits parle d'elle-même. Un vrai commerce de quartier comme on les aime. »</p>
+          <div class="reviews__card-author">
+            <div class="reviews__card-avatar">B</div>
+            <div><strong>Baptiste C.</strong><span>Client depuis 2019</span></div>
+          </div>
+        </div>
+
+        <!-- Série 2 (dupliquée pour boucle infinie) -->
+        <div class="reviews__card">
+          <div class="reviews__card-stars">★★★★★</div>
+          <p class="reviews__card-text">« Une boucherie comme on n'en trouve plus. La viande est toujours fraîche, le service irréprochable. Je viens ici depuis des années. »</p>
+          <div class="reviews__card-author">
+            <div class="reviews__card-avatar">H</div>
+            <div><strong>Hichem C.</strong><span>Client depuis 2018</span></div>
+          </div>
+        </div>
+
+        <div class="reviews__card">
+          <div class="reviews__card-stars">★★★★★</div>
+          <p class="reviews__card-text">« La qualité halal est irréprochable. On sent vraiment la différence avec les grandes surfaces. Je recommande à toute ma famille. »</p>
+          <div class="reviews__card-author">
+            <div class="reviews__card-avatar">N</div>
+            <div><strong>Natalie B.</strong><span>Cliente fidèle</span></div>
+          </div>
+        </div>
+
+        <div class="reviews__card">
+          <div class="reviews__card-stars">★★★★★</div>
+          <p class="reviews__card-text">« L'équipe est aux petits soins, la préparation sur demande est un vrai plus. Mon boucher de confiance depuis que j'habite le quartier. »</p>
+          <div class="reviews__card-author">
+            <div class="reviews__card-avatar">M</div>
+            <div><strong>Mouhamed O.</strong><span>Client depuis 2021</span></div>
+          </div>
+        </div>
+
+        <div class="reviews__card">
+          <div class="reviews__card-stars">★★★★★</div>
+          <p class="reviews__card-text">« Des morceaux d'agneau exceptionnels pour notre Aid. Le boucher a pris le temps de tout expliquer et de couper selon nos envies. Merci ! »</p>
+          <div class="reviews__card-author">
+            <div class="reviews__card-avatar">Y</div>
+            <div><strong>Yasmine C.</strong><span>Cliente fidèle</span></div>
+          </div>
+        </div>
+
+        <div class="reviews__card">
+          <div class="reviews__card-stars">★★★★★</div>
+          <p class="reviews__card-text">« Toujours accueilli avec le sourire. La fraîcheur des produits parle d'elle-même. Un vrai commerce de quartier comme on les aime. »</p>
+          <div class="reviews__card-author">
+            <div class="reviews__card-avatar">B</div>
+            <div><strong>Baptiste C.</strong><span>Client depuis 2019</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<app-footer />
