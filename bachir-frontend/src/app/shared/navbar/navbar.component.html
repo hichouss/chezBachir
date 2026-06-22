@@ -2,11 +2,11 @@
   <div class="navbar__inner">
 
     <!-- Logo -->
-    <a class="navbar__logo" routerLink="/">
+    <a class="navbar__logo" routerLink="/" (click)="closeMenu()">
       <img class="navbar__logo-img" src="/ChatGPT Image 14 juin 2026, 17_33_23.png" alt="Boucherie Chez Bachir" />
     </a>
 
-    <!-- Nav links -->
+    <!-- Nav links desktop -->
     <nav class="navbar__nav">
       <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Accueil</a>
       <a routerLink="/catalogue" routerLinkActive="active">Nos produits</a>
@@ -15,10 +15,28 @@
       <a routerLink="/contact" routerLinkActive="active">Contact</a>
     </nav>
 
-    <!-- CTA -->
+    <!-- CTA desktop -->
     <div class="navbar__actions">
       <a routerLink="/contact" class="navbar__cta">Nous contacter</a>
     </div>
 
+    <!-- Hamburger -->
+    <button class="navbar__burger" (click)="toggleMenu()" [class.navbar__burger--open]="menuOpen" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
   </div>
+
+  <!-- Menu mobile -->
+  <div class="navbar__mobile" [class.navbar__mobile--open]="menuOpen">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="closeMenu()">Accueil</a>
+    <a routerLink="/catalogue" routerLinkActive="active" (click)="closeMenu()">Nos produits</a>
+    <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">À propos</a>
+    <a routerLink="/horaires" routerLinkActive="active" (click)="closeMenu()">Horaires</a>
+    <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contact</a>
+    <a routerLink="/contact" class="navbar__mobile-cta" (click)="closeMenu()">Nous contacter</a>
+  </div>
+
 </header>
