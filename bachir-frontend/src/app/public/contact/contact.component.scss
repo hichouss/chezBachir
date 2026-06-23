@@ -245,6 +245,19 @@
     textarea { resize: vertical; min-height: 130px; }
   }
 
+  &__input--error {
+    border-color: #c41e2a !important;
+    background: #fef5f5 !important;
+  }
+
+  &__error {
+    display: block;
+    font-size: 0.78rem;
+    color: #c41e2a;
+    margin-top: 0.3rem;
+    padding-left: 0.2rem;
+  }
+
   &__select-arrow {
     position: absolute;
     right: 0.9rem;

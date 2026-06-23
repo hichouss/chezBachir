@@ -92,23 +92,32 @@
           <h2 class="form-title">Envoyez-nous un message</h2>
           <p class="form-sub">Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.</p>
 
-          <form class="cform" (ngSubmit)="onSubmit()">
+          <form class="cform" #contactForm="ngForm" (ngSubmit)="trySubmit(contactForm.valid!)">
 
             <div class="cform__row">
               <div class="cform__field">
-                <input type="text" placeholder="Nom complet *" [(ngModel)]="formData.name" name="name" required />
+                <input type="text" placeholder="Nom complet *" [(ngModel)]="formData.name" name="name" #nameField="ngModel" required [class.cform__input--error]="submitted && nameField.invalid" />
+                @if (submitted && nameField.invalid) {
+                  <span class="cform__error">Veuillez entrer votre nom</span>
+                }
               </div>
               <div class="cform__field">
-                <input type="tel" placeholder="Téléphone *" [(ngModel)]="formData.phone" name="phone" required />
+                <input type="tel" placeholder="Téléphone *" [(ngModel)]="formData.phone" name="phone" #phoneField="ngModel" required [class.cform__input--error]="submitted && phoneField.invalid" />
+                @if (submitted && phoneField.invalid) {
+                  <span class="cform__error">Veuillez entrer votre téléphone</span>
+                }
               </div>
             </div>
 
             <div class="cform__field">
-              <input type="email" placeholder="Email *" [(ngModel)]="formData.email" name="email" required />
+              <input type="email" placeholder="Email *" [(ngModel)]="formData.email" name="email" #emailField="ngModel" required [class.cform__input--error]="submitted && emailField.invalid" />
+              @if (submitted && emailField.invalid) {
+                <span class="cform__error">Veuillez entrer un email valide</span>
+              }
             </div>
 
             <div class="cform__field">
-              <select [(ngModel)]="formData.subject" name="subject">
+              <select [(ngModel)]="formData.subject" name="subject" #subjectField="ngModel" required [class.cform__input--error]="submitted && subjectField.invalid">
                 <option value="" disabled selected>Sujet</option>
                 <option>Question sur un produit</option>
                 <option>Commande spéciale</option>
@@ -118,10 +127,16 @@
               <svg class="cform__select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="6 9 12 15 18 9"/>
               </svg>
+              @if (submitted && subjectField.invalid) {
+                <span class="cform__error">Veuillez choisir un sujet</span>
+              }
             </div>
 
             <div class="cform__field">
-              <textarea placeholder="Votre message *" rows="5" [(ngModel)]="formData.message" name="message" required></textarea>
+              <textarea placeholder="Votre message *" rows="5" [(ngModel)]="formData.message" name="message" #messageField="ngModel" required [class.cform__input--error]="submitted && messageField.invalid"></textarea>
+              @if (submitted && messageField.invalid) {
+                <span class="cform__error">Veuillez entrer votre message</span>
+              }
             </div>
 
             <button type="submit" class="cform__submit">
