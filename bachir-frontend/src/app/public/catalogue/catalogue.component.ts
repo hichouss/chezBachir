@@ -51,6 +51,18 @@ const ALL_PRODUCTS: StaticProduct[] = [
   // Préparations Maison
   { id: 25, name: 'Merguez maison',      category: 'Préparations Maison', emoji: '🍢', imageUrl: '/merguez-sur-un-fond-blanc-plusieurs-cru-d-isolement-140511276.webp', price: 13.99, unit: 'kg' },
   { id: 26, name: 'Poulet mariné',       category: 'Préparations Maison', emoji: '🍢', imageUrl: "/Capture d'écran 2026-06-21 210949.png", price: 14.99, unit: 'kg' },
+  // Épicerie
+  { id: 27, name: 'Hamoud Blanche 1L',   category: 'Épicerie', emoji: '🫒', imageUrl: "/Capture d'écran 2026-06-25 195201.png", price: 2.50, unit: 'pièce' },
+  { id: 28, name: 'Slim Orange 1L',      category: 'Épicerie', emoji: '🫒', imageUrl: "/Capture d'écran 2026-06-25 195339.png", price: 2.50, unit: 'pièce' },
+  { id: 29, name: 'Selecto 1L',          category: 'Épicerie', emoji: '🫒', imageUrl: "/Capture d'écran 2026-06-25 195455.png", price: 2.50, unit: 'pièce' },
+  { id: 30, name: 'Slim Citron 1L',      category: 'Épicerie', emoji: '🫒', imageUrl: "/Capture d'écran 2026-06-25 195605.png", price: 2.50, unit: 'pièce' },
+  { id: 31, name: 'Slim Ananas 1L',      category: 'Épicerie', emoji: '🫒', imageUrl: "/Capture d'écran 2026-06-25 195655.png", price: 2.50, unit: 'pièce' },
+  { id: 32, name: 'Bouillon Jumbo Halal', category: 'Épicerie', emoji: '🫒', imageUrl: "/Capture d'écran 2026-06-25 200154.png", price: 100, unit: 'pièce' },
+  { id: 33, name: 'Miel Assila El Mordjene 1kg', category: 'Épicerie', emoji: '🫒', imageUrl: "/Capture d'écran 2026-06-25 200325.png", price: 100, unit: 'pièce' },
+  { id: 35, name: 'Medina Smen 500g', category: 'Épicerie', emoji: '🫒', imageUrl: "/Capture d'écran 2026-06-25 200715.png", price: 100, unit: 'pièce' },
+  { id: 36, name: 'Margarine La Belle 500g', category: 'Épicerie', emoji: '🫒', imageUrl: "/Capture d'écran 2026-06-25 200826.png", price: 100, unit: 'pièce' },
+  { id: 37, name: 'Couscous Dari Fin 1kg', category: 'Épicerie', emoji: '🫒', imageUrl: "/Capture d'écran 2026-06-25 201001.png", price: 100, unit: 'pièce' },
+  { id: 38, name: 'Harissa', category: 'Épicerie', emoji: '🫒', imageUrl: "/Capture d'écran 2026-06-25 201222.png", price: 100, unit: 'pièce' },
 ];
 
 const CATEGORIES: StaticCategory[] = [
@@ -58,6 +70,7 @@ const CATEGORIES: StaticCategory[] = [
   { id: 'Agneau',              name: 'Agneau',              emoji: '🐑' },
   { id: 'Volaille',            name: 'Volaille',            emoji: '🐔' },
   { id: 'Préparations Maison', name: 'Préparations Maison', emoji: '🍢' },
+  { id: 'Épicerie',            name: 'Épicerie',            emoji: '🫒' },
 ];
 
 @Component({

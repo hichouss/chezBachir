@@ -1,5 +1,6 @@
 <app-navbar />
 
+
 <!-- ══════════════════════════════════════════════
      HERO
 ══════════════════════════════════════════════ -->
@@ -80,6 +81,54 @@
 </div>
 
 <!-- ══════════════════════════════════════════════
+     PROMOS
+══════════════════════════════════════════════ -->
+<section class="promos">
+  <div class="promos__inner">
+    <div class="promos__header">
+      <p class="products-label">NOS PROMOTIONS</p>
+      <h2 class="products-title">Offres de la semaine</h2>
+    </div>
+    <div class="promos__track-wrapper">
+      <div class="promos__track">
+        @for (p of promos; track p.name) {
+          <div class="promo-card">
+            <div class="promo-card__badge">PROMO</div>
+            <div class="promo-card__img">
+              <img [src]="p.imageUrl" [alt]="p.name" />
+            </div>
+            <div class="promo-card__body">
+              <h3 class="promo-card__name">{{ p.name }}</h3>
+              <span class="promo-card__price">{{ p.price }} €<small>/kg</small></span>
+              <div class="promo-card__offer">
+                <span class="promo-card__offer-detail">{{ p.offer }}</span>
+                <span class="promo-card__saving">{{ p.saving }}</span>
+              </div>
+            </div>
+          </div>
+        }
+        @for (p of promos; track p.name + '_2') {
+          <div class="promo-card">
+            <div class="promo-card__badge">PROMO</div>
+            <div class="promo-card__img">
+              <img [src]="p.imageUrl" [alt]="p.name" />
+            </div>
+            <div class="promo-card__body">
+              <h3 class="promo-card__name">{{ p.name }}</h3>
+              <span class="promo-card__price">{{ p.price }} €<small>/kg</small></span>
+              <div class="promo-card__offer">
+                <span class="promo-card__offer-detail">{{ p.offer }}</span>
+                <span class="promo-card__saving">{{ p.saving }}</span>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
      PRODUITS
 ══════════════════════════════════════════════ -->
 <section class="products-section">
@@ -117,11 +166,9 @@
 
     <!-- Dots navigation -->
     <div class="products-dots">
-      <span class="products-dots__dot products-dots__dot--active"></span>
-      <span class="products-dots__dot"></span>
-      <span class="products-dots__dot"></span>
-      <span class="products-dots__dot"></span>
-      <span class="products-dots__dot"></span>
+      @for (page of pages; track $index) {
+        <span class="products-dots__dot" [class.products-dots__dot--active]="currentPage === $index" (click)="goToPage($index)"></span>
+      }
     </div>
 
   </div>
@@ -181,7 +228,7 @@
           </svg>
         </div>
         <h3>Halal certifié</h3>
-        <p>Toutes nos viandes sont abattues et certifiées halal selon les normes islamiques. Certification renouvelée chaque année.</p>
+        <p>Toutes nos viandes sont préparées dans le respect des normes halal. Nous sélectionnons nos fournisseurs avec exigence afin de vous garantir une qualité irréprochable.</p>
       </div>
 
       <div class="engagement-card">
@@ -191,7 +238,7 @@
           </svg>
         </div>
         <h3>Fraîcheur garantie</h3>
-        <p>Nos produits arrivent chaque matin. Aucune viande de la veille. Si ce n'est pas frais, nous ne le vendons pas.</p>
+        <p>Nous sélectionnons chaque jour des produits de qualité afin de vous proposer une viande fraîche, savoureuse et soigneusement préparée par notre équipe.</p>
       </div>
 
       <div class="engagement-card">
