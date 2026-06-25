@@ -54,10 +54,10 @@ export class HomeComponent implements OnInit, OnDestroy {
       { id: 16, name: 'Slim Citron 1L',  unit: 'la pièce', price: 2.50, imageUrl: "/Capture d'écran 2026-06-25 195605.png" },
     ],
     [
-      { id: 17, name: 'Harissa',           unit: 'la pièce', price: 100,  imageUrl: "/Capture d'écran 2026-06-25 201222.png" },
-      { id: 18, name: 'Couscous Dari 1kg', unit: 'la pièce', price: 100,  imageUrl: "/Capture d'écran 2026-06-25 201001.png" },
-      { id: 19, name: 'Medina Smen 500g',  unit: 'la pièce', price: 100,  imageUrl: "/Capture d'écran 2026-06-25 200715.png" },
-      { id: 20, name: 'Margarine La Belle 500g', unit: 'la pièce', price: 100, imageUrl: "/Capture d'écran 2026-06-25 200826.png" },
+      { id: 17, name: 'Harissa',           unit: 'la pièce', price: 3.50,  imageUrl: "/Capture d'écran 2026-06-25 201222.png" },
+      { id: 18, name: 'Couscous Dari 1kg', unit: 'la pièce', price: 3.50,  imageUrl: "/Capture d'écran 2026-06-25 201001.png" },
+      { id: 19, name: 'Medina Smen 500g',  unit: 'la pièce', price: 3.50,  imageUrl: "/Capture d'écran 2026-06-25 200715.png" },
+      { id: 20, name: 'Margarine La Belle 500g', unit: 'la pièce', price: 3.50, imageUrl: "/Capture d'écran 2026-06-25 200826.png" },
     ],
   ];
 
