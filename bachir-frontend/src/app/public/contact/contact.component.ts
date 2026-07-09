@@ -30,7 +30,7 @@ export class ContactComponent {
     body.append('subject', this.formData.subject);
     body.append('message', this.formData.message);
     body.append('_captcha', 'false');
-    body.append('_subject', 'Nouveau message - Boucherie Chez Bachir');
+    body.append('_subject', 'Nouveau message - Boucherie Bachir');
 
     fetch('https://formsubmit.co/ajax/bchezbachir@gmail.com', {
       method: 'POST',

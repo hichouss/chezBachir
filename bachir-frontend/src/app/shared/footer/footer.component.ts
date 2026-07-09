@@ -170,7 +170,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 
         <!-- Logo + tagline + réseaux -->
         <div>
-          <img class="footer__logo-img" src="/ChatGPT Image 14 juin 2026, 17_33_23.png" alt="Boucherie Chez Bachir" />
+          <img class="footer__logo-img" src="/ChatGPT Image 14 juin 2026, 17_33_23.png" alt="Boucherie Bachir" />
           <p class="footer__tagline">Votre boucherie de confiance depuis 1986.</p>
           <div class="footer__guarantees">
             <span class="footer__guarantee">
@@ -263,7 +263,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 
       <!-- Barre du bas -->
       <div class="footer__bottom">
-        <span>© {{ year }} Boucherie Chez Bachir. Tous droits réservés. — by hichouss</span>
+        <span>© {{ year }} Boucherie Bachir. Tous droits réservés. — by hichouss</span>
         <div class="footer__bottom-links">
           <a href="#">Mentions légales</a>
           <a href="#">Politique de confidentialité</a>
