@@ -53,11 +53,26 @@
     text-transform: uppercase;
   }
 
+  &__tagline {
+    font-size: .85rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.5);
+    margin-bottom: 10px;
+  }
+
   &__sub {
     font-size: 1.05rem;
     line-height: 1.7;
     margin-bottom: 28px;
     color: rgba(255,255,255,0.80);
+  }
+
+  &__btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
 
   &__cta {
@@ -74,6 +89,17 @@
     transition: background 0.2s;
 
     &:hover { background: #b31318; }
+
+    &--outline {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,.5);
+      color: #fff;
+
+      &:hover {
+        background: rgba(255,255,255,.1);
+        border-color: #fff;
+      }
+    }
   }
 }
 
@@ -591,6 +617,104 @@
 
 }
 
+/* ── MAKANEK FEATURE ─────────────────────────── */
+.mk-feature {
+  padding: 3rem 2rem;
+  background: #fff;
+
+  &__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  &__photo {
+    img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+    }
+  }
+
+  &__tag {
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: #c41e2a;
+    margin: 0 0 .75rem;
+  }
+
+  &__title {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 800;
+    color: #111;
+    margin: 0 0 1rem;
+    line-height: 1.1;
+  }
+
+  &__rule {
+    width: 40px;
+    height: 3px;
+    background: #c41e2a;
+    margin-bottom: 1.25rem;
+  }
+
+  &__desc {
+    color: #666;
+    line-height: 1.8;
+    font-size: .97rem;
+    margin: 0 0 1.5rem;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+
+    li {
+      font-size: .92rem;
+      color: #444;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+
+      &::before {
+        content: '✓';
+        color: #c41e2a;
+        font-weight: 700;
+        font-size: .85rem;
+      }
+    }
+  }
+
+  &__price {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #c41e2a;
+    margin: 0;
+
+    span {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #999;
+    }
+  }
+
+  @media (max-width: 860px) {
+    &__inner { grid-template-columns: 1fr; gap: 2rem; }
+    &__photo img { height: 260px; }
+  }
+}
+
 /* ── PRODUCTS SECTION ─────────────────────────── */
 .products-section {
   padding: 3rem 0 1.5rem;
@@ -686,7 +810,42 @@
     letter-spacing: 0.06em;
   }
 
+  &__promo-badge {
+    position: absolute;
+    top: 10px; left: 10px;
+    z-index: 2;
+    background: #c41e2a;
+    color: #fff;
+    font-size: 0.62rem;
+    font-weight: 700;
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    letter-spacing: 0.08em;
+  }
+
+  &__offer {
+    margin-top: .6rem;
+    background: #fef2f2;
+    border-radius: 6px;
+    padding: .5rem .7rem;
+
+    &-detail {
+      display: block;
+      font-size: .82rem;
+      color: #444;
+    }
+
+    &-saving {
+      display: block;
+      font-size: .78rem;
+      color: #c41e2a;
+      font-weight: 600;
+      margin-top: .15rem;
+    }
+  }
+
   &__img {
+    position: relative;
     height: 190px;
     display: flex;
     align-items: center;
@@ -887,25 +1046,35 @@
 /* ── NOTRE HISTOIRE ───────────────────────────── */
 .story {
   background: #1a1a1a;
-  padding: 3.5rem 0;
+  padding: 0;
+  overflow: hidden;
 
   &__inner {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
+    height: 580px;
+    align-items: stretch;
   }
 
   &__label {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
+    color: #c41e2a;
     margin-bottom: 1.2rem;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 18px;
+      height: 2px;
+      background: #c41e2a;
+      flex-shrink: 0;
+    }
   }
 
   &__title {
@@ -941,19 +1110,30 @@
     &:hover { opacity: 0.7; }
   }
 
-  &__visual { display: flex; justify-content: center; }
+  &__text {
+    padding: 3rem 3rem 3rem clamp(2rem, 6vw, 5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  &__visual {
+    position: relative;
+    overflow: hidden;
+  }
 
   &__img-wrap {
     position: relative;
     width: 100%;
-    max-width: 400px;
+    height: 100%;
 
     img {
       width: 100%;
-      height: 380px;
+      height: 100%;
       object-fit: cover;
+      object-position: center center;
       display: block;
-      filter: brightness(0.85) contrast(1.05);
     }
   }
 
@@ -1256,9 +1436,77 @@
   .makanek__features { flex-direction: column; gap: 0.8rem; }
   .makanek__visual { height: 280px; }
 
-  .story__inner { grid-template-columns: 1fr; gap: 3rem; }
+  .story__inner { grid-template-columns: 1fr; }
+  .story__text { padding: 3rem 2rem; }
   .story__title { font-size: 1.9rem; }
-  .story__visual { order: -1; }
+  .story__visual { min-height: 300px; order: -1; }
+  .story__img-wrap img { object-position: center; }
 
   .engagements__grid { grid-template-columns: 1fr; gap: 1rem; }
+}
+
+/* ── BRAND MAKANEK ────────────────────────────── */
+.brand-mk {
+  background: #111;
+  padding: 5rem 2rem;
+  text-align: center;
+
+  &__inner {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  &__eyebrow {
+    font-size: 1.4rem;
+    font-style: italic;
+    color: rgba(255,255,255,.6);
+    margin: 0 0 .25rem;
+  }
+
+  &__halal {
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #c41e2a;
+    margin: 0 0 1.5rem;
+  }
+
+  &__title {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: .06em;
+    margin: 0 0 .75rem;
+  }
+
+  &__tagline {
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(255,255,255,.5);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin: 0 0 1.5rem;
+  }
+
+  &__desc {
+    color: rgba(255,255,255,.65);
+    font-size: .97rem;
+    line-height: 1.75;
+    margin: 0 0 2.5rem;
+  }
+
+  &__btn {
+    display: inline-block;
+    background: #c41e2a;
+    color: #fff;
+    text-decoration: none;
+    padding: .9rem 2.2rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: .95rem;
+    transition: background .2s;
+
+    &:hover { background: #a01824; }
+  }
 }

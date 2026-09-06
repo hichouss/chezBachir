@@ -8,6 +8,7 @@ export const routes: Routes = [
   { path: 'commande', loadComponent: () => import('./public/checkout/checkout.component').then(m => m.CheckoutComponent) },
   { path: 'horaires', loadComponent: () => import('./public/horaires/horaires.component').then(m => m.HorairesComponent) },
   { path: 'contact', loadComponent: () => import('./public/contact/contact.component').then(m => m.ContactComponent) },
+  { path: 'makanek-libanaise', loadComponent: () => import('./public/makanek/makanek.component').then(m => m.MakanekComponent) },
   {
     path: 'admin',
     children: [
